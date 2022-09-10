@@ -1,11 +1,14 @@
-version: '3'
+version: "3.7"
 services:
-  app:
-    build: node
-    image: node-express-dev:1.0
-    container_name: node
-    tty: true
-    volumes:
-      - ./node/app:/app
-    ports:
-      - "8080:3000"
+    app:
+      image: node:16.14.0
+      working_dir: /usr/src/app
+      tty: true
+      ports: 
+      - '3000:3000'
+      volumes:
+        - ./:/usr/src/app
+      command: >
+        bash -c "npm install &&
+        npm install nodemon -g &&
+        nodemon src/server.js"
