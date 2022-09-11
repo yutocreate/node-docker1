@@ -1,14 +1,21 @@
 version: "3.7"
 services:
-    app:
-      image: node:16.14.0
-      working_dir: /usr/src/app
-      tty: true
-      ports: 
-      - '3000:3000'
-      volumes:
-        - ./:/usr/src/app
-      command: >
-        bash -c "npm install &&
-        npm install nodemon -g &&
-        nodemon src/server.js"
+  app:
+    image: node:16.14.0
+    working_dir: /usr/src/app
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+    command: >
+      bash -c "npm install &&
+      npm install nodemon -g &&
+      npm install sqlite3 body-parser &&
+      nodemon src/app.js"
+  db:
+    image: nouchka/sqlite3:latest
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./db/:/root/db/

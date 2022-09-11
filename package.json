@@ -4,11 +4,13 @@
   "description": "Node.js on Docker",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "start": "nodemon src/app.js"
   },
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.16.1",
     "multer": "^1.4.5-lts.1",
+    "sqlite3": "^5.0.11",
     "uuid": "^9.0.0"
   }
 }
